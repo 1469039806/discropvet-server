@@ -1,0 +1,8 @@
+server:
+  port: 8761
+eureka:
+  server:
+    number-of-replication-retries: 1
+  instance:
+    prefer-ip-address: false
+    hostname: eureka-server
