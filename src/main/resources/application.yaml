@@ -1,11 +1,15 @@
 server:
   port: 8761
+
 eureka:
-  client:
-    register-with-eureka: false #是否将自己注册到 Eureka-Server 中，默认的为 true
-    fetch-registry: false #是否需要拉取服务信息，默认为true
-  server:
-    number-of-replication-retries: 1
+  numberRegistrySyncRetries: 1
   instance:
-    prefer-ip-address: false
+    preferIpAddress: false
     hostname: eureka-server
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: true
